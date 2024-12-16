@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import FileUpload from './components/FileUpload';
 import Footer from './components/Footer';
 import Contact from './components/Contact';
+import Connect from './Connect';
 
 
 
@@ -13,6 +14,7 @@ function App() {
       <Navbar />
       <Hero />
       <FileUpload />
+      <Connect />
       <Contact/>
       <Footer />
     </div>
