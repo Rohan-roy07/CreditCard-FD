@@ -14,10 +14,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
 
-
-
-
-credit_card_data = pd.read_csv('./Data/creditcard.csv')
+credit_card_data = pd.read_csv('./creditcard.csv')
 credit_card_data.head()
 credit_card_data.tail()
 credit_card_data.info()
