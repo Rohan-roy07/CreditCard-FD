@@ -12,14 +12,6 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from flask import Flask, jsonify, request
-from flask_cors import CORS
-
-app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
-
-
-
 
 
 credit_card_data = pd.read_csv('./creditcard.csv')
@@ -86,20 +78,3 @@ model.fit(X_train_scaled, Y_train)
 # Evaluate the model
 accuracy = model.score(X_test_scaled, Y_test)
 print(f"Model Accuracy: {accuracy * 100:.2f}%")
-
-
-
-# Example route to send data to React frontend
-@app.route('/api/data', methods=['GET'])
-def get_data():
-    return jsonify({"message": f"Model Accuracy: {accuracy * 100:.2f}%"})
-
-# Example route to receive data from React frontend
-@app.route('/api/submit', methods=['POST'])
-def submit_data():
-    data = request.json
-    print(f"Received data: {data}")
-    return jsonify({"status": "success", "received_data": data}), 200
-
-if __name__ == '__main__':
-    app.run(debug=True, host='localhost', port=5000)
