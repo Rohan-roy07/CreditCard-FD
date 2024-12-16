@@ -1,9 +1,23 @@
 import numpy as np
 import pandas as pd
+#import seaborn as sns
+#import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
-credit_card_data = pd.read_csv('/content/sample_data/creditcard.csv')
+from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+
+
+
+
+credit_card_data = pd.read_csv('./Data/creditcard.csv')
 credit_card_data.head()
 credit_card_data.tail()
 credit_card_data.info()
@@ -29,9 +43,9 @@ print(X)
 print(Y)
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, stratify=Y, random_state=2)
 print(X.shape, X_train.shape, X_test.shape)
-model = LogisticRegression()
-model.fit(X_train, Y_train)
-from sklearn.preprocessing import StandardScaler
+#model = LogisticRegression()
+#model.fit(X_train, Y_train)
+
 
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
@@ -40,18 +54,18 @@ model = LogisticRegression(max_iter=100000, solver='saga', class_weight='balance
 model.fit(X_train_scaled, Y_train)
 model = LogisticRegression(max_iter=100000, solver='liblinear', class_weight='balanced')
 model.fit(X_train_scaled, Y_train)
-import seaborn as sns
-import matplotlib.pyplot as plt
 
+'''
 # Correlation heatmap
 corr_matrix = pd.DataFrame(X_train_scaled).corr()
 sns.heatmap(corr_matrix, annot=False, cmap='coolwarm')
 plt.show()
 model = LogisticRegression(max_iter=100000, solver='saga', class_weight='balanced', C=0.1)
 model.fit(X_train_scaled, Y_train)
-from sklearn.linear_model import LogisticRegression
-from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import train_test_split
+'''
+
+
+
 
 # Split the data
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
